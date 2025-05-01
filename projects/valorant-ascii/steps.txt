@@ -1,0 +1,21 @@
+How will I make this tool?
+
+Make a table that is 26 em's wide in HTML
+ - Table can be height scalable?
+
+Implement code:
+
+Canvas Size Selector
+
+Color selector
+- We will start with basic ▒ and █
+- Make selected color box
+
+Click and drag to place selected Color
+
+Copy table to clipboard
+
+Clear table button
+
+Fill Canvas
+- Fills canvas with selected color

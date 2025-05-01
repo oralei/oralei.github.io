@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+  color: #ffffff;
+  background: #000000;
+  padding: 48px;
+}
+
+#title {
+  text-align: center;
+  display: inline-block;
+  font-size: 30px;
+}
+
+table {
+  border-spacing: 0 3px;
+}
+
+td {
+  border: 1px solid;
+  border-color: #8787872d;
+  padding: 0px;
+  width: 16px;
+  height: 0px;
+  font-size: 22px;
+}
+
+button {
+  font-size: 18px;
+  color: #ffffff;
+  border-color: #8787872d;
+  background: #000000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 10px;
+}
