@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700;900&display=swap");
+
+body {
+  font-family: "Source Code Pro", monospace;
+  background: #ffd6e4;
+  padding: 48px;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Source Code Pro", monospace;
+  display: inline-block;
+  font-size: 72px;
+}
+
+.button1 {
+  font-family: "Source Code Pro", monospace;
+  padding: 10px 10px 10px 10px;
+  font-size: 24px;
+  border: 3px solid;
+  box-shadow: 0 0.3rem rgb(0, 0, 0);
+  width: 100px;
+}
+
+#yesButton:hover {
+  background-color: rgb(123, 250, 98);
+}
+
+#noButton:hover {
+  background-color: rgb(252, 107, 119);
+}
+
+.button1:active {
+  font-family: "Source Code Pro", monospace;
+  filter: brightness(0.7);
+  position: relative;
+  top: 0.1rem;
+}
+
+#mainGrid {
+  position: relative;
+  transform: translate(0, 100px);
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  justify-content: center;
+}
+
+#centerGrid {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+#rightGrid {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  justify-content: bottom;
+}
+
+#flowers,
+#message {
+  display: none;
+}
+
+#message {
+  position: relative;
+  top: 20px;
+  font-size: 24px;
+}
+
+.secretNo {
+  font-size: 60px;
+  font-weight: bold;
+
+  border: none;
+  background: none;
+}
+
+#secretButton {
+  font-size: 54px;
+  padding: 0px 20px 0px 20px;
+}
+
+#secretButton:hover {
+  color: rgb(252, 107, 119);
+}
+
+#secretID {
+  display: none;
+}
