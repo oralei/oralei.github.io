@@ -9,6 +9,7 @@ body {
 
 	background-color: rgb(5, 4, 5);
 	color: rgb(255, 255, 255);
+	overflow: hidden;
 }
 
 .contact {
@@ -55,6 +56,12 @@ body {
 }
 
 .projects-list {
+	display: grid;
+	justify-content: center;
+	justify-items: center;
+}
+
+.centered {
 	display: grid;
 	justify-content: center;
 	justify-items: center;
