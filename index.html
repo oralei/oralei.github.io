@@ -1,37 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MJL</title>
-    <link rel="stylesheet" href="../statics/style.css">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MJL - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="statics/style2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!--<div id="cursor"></div>-->
+
+<div class="shell">
+
+  <nav class="topbar">
+    <span class="topbar-logo">mjl<span style="color:var(--muted)">://</span></span>
+    <ul class="topbar-nav">
+      <li><a href="index.html" class="active">home</a></li>
+      <li><a href="projects2.html">projects</a></li>
+      <li><a href="about-me.html">about</a></li>
+      <li><a href="mailto:markjluansing@yahoo.com">contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-prompt"><span>// hi, my name is</span></p>
+    <h1 class="hero-name">Mark Justin Luansing<br></h1>
+    <p class="hero-tagline">
+      <span id="typed-text"></span><span class="blink"></span>
+    </p>
+	
+	<section class="about-strip" id="about">
+    <div>
+      <p class="strip-label">// about</p>
+      <p class="strip-body">
+        A software developer based in <span class="blueblue">Saskatchewan</span> creating experiences that feel right, specializing in full-stack development.
+      </p>
+    </div>
+    <div>
+      <p class="strip-label">// skills & technologies</p>
+      <div class="skills-list">
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">C#</span>
+        <span class="skill-chip">C/C++</span>
+        <span class="skill-chip">MySQL</span>
+        <span class="skill-chip">MongoDB</span>
+        <span class="skill-chip">Django</span>
+        <span class="skill-chip">Electron</span>
+        <span class="skill-chip">Unity</span>
+        <span class="skill-chip">Git</span>
+        <span class="skill-chip">Linux</span>
+        <span class="skill-chip">Blender</span>
+      </div>
+    </div>
+  </section>
+	
+    <div class="hero-links">
+      <a class="btn" href="https://github.com/oralei" target="_blank" rel="noopener"><span class="icon icon-github"></span>github</a>
+      <a class="btn" href="https://www.linkedin.com/in/mark-justin-luansing-3b68912b1/" target="_blank" rel="noopener"><span class="icon icon-linkedin"></span>linkedin</a>
+      <a class="btn" href="mailto:markjluansing@yahoo.com"><span class="icon icon-email"></span>markjluansing@yahoo.com</a>
+    </div>
+  </section>
+
+  <div class="divider">
+    <span class="divider-label">// education & certificates</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="experience" id="experience">
+    <a class="project-row">
+      <span class="proj-idx">01</span>
+      <div class="proj-body">
+        <div class="proj-name">University of Regina - 2022-2026</div>
+        <div class="proj-desc">BCs. Computer Science, Minor in Creative Technologies</div>
+      </div>
+    </a>
+    <a class="project-row">
+      <span class="proj-idx">02</span>
+      <div class="proj-body">
+        <div class="proj-name">AWS Certificate - September 2026</div>
+        <div class="proj-desc">AWS Cloud Practitioner</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="divider">
+    <span class="divider-label">// projects</span>
+    <div class="divider-line"></div>
+  </div>
   
-  <body>
-    <main>
-      <div class="title-wrap">
-        <h1>mark justin luansing</h1>
+  <div class="projects" id="projects">
+    <a class="project-row" href="html/projects.html#mentora">
+      <span class="proj-idx">01</span>
+      <div class="proj-body">
+        <div class="proj-name">Mentora</div>
+        <div class="proj-desc">Student-teacher matching platform — Django, MongoDB, Cloudinary</div>
       </div>
-      <h2>email: markjluansing@yahoo.com</h2>
-      <div class="contact">
-        <a href="https://github.com/oralei" target="_blank" rel="noopener noreferrer"><img class="image" src="images/github.png" alt="github"></a>
-        <a href="https://www.linkedin.com/in/mark-justin-luansing-3b68912b1/" target="_blank" rel="noopener noreferrer"><img class="image" src="images/linkedin.png" alt="linkedin"></a>
+      <span class="proj-tag">Python</span>
+      <span class="proj-arrow">→</span>
+    </a>
+    <a class="project-row" href="html/projects.html#sippit">
+      <span class="proj-idx">02</span>
+      <div class="proj-body">
+        <div class="proj-name">Ayce!</div>
+        <div class="proj-desc">A web platform for tracking your favourite food orders and restaurants — React, Expres.js, PostgreSQL</div>
       </div>
-      <div class="nav-bar">
-        <a href="/" class="bar-element1">home</a>
-        <a href="/" class="bar-element2">about</a>
-        <a href="html/projects.html" class="bar-element3">projects</a>
+      <span class="proj-tag">TypeScript</span>
+      <span class="proj-arrow">→</span>
+    </a>
+    <a class="project-row" href="html/projects.html#gestureweave">
+      <span class="proj-idx">03</span>
+      <div class="proj-body">
+        <div class="proj-name">Gestureweave</div>
+        <div class="proj-desc">VR gesture recognition with aim-assist — Unity, Blender</div>
       </div>
-      <div>
-        <h1>Hi, my name is Mark.</h1>
-        <a class="centered about-me">I'm a programmer and artist based in Saskatchewan. My hobbies span the whole creative field, from music and art to video game design.</a>
-        <i class="centered">Please note my website is currently under construction.</i>
+      <span class="proj-tag">C#</span>
+      <span class="proj-arrow">→</span>
+    </a>
+    <a class="project-row" href="html/projects.html#things">
+      <span class="proj-idx">04</span>
+      <div class="proj-body">
+        <div class="proj-name">No Peeking!</div>
+        <div class="proj-desc">Retro-horror narrative game — Unity, Yarn Spinner</div>
       </div>
-    </main>
-    <script src="index.js"></script>
-  </body>
-  
+      <span class="proj-tag">C#</span>
+      <span class="proj-arrow">→</span>
+    </a>
+    <div class="hero-links">
+      <a class="btn" href="projects2.html" target="_blank" rel="noopener">See All Projects >></a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span>mark justin luansing</span>
+    <div class="footer-links">
+      <a href="https://github.com/oralei" target="_blank" rel="noopener">github</a>
+      <a href="https://www.linkedin.com/in/mark-justin-luansing-3b68912b1/" target="_blank" rel="noopener">linkedin</a>
+    </div>
+  </footer>
+
+</div>
+
+<script src="statics/index.js"></script>
+
+</body>
 </html>
