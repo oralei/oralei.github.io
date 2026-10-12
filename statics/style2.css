@@ -381,6 +381,17 @@ body::after {
   gap: 6px;
 }
 
+.skills-sublabel {
+  font-size: 12px;
+  color: var(--blue-dim);
+  letter-spacing: 0.08em;
+  margin: 12px 0 6px;
+}
+
+.strip-label + .skills-sublabel {
+  margin-top: 0;
+}
+
 .skill-chip {
   font-size: 14px;
   color: var(--muted);

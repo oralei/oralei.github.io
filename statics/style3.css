@@ -536,6 +536,10 @@ body::after {
   background: url("../media/project-previews/things_dont_change_card.png") center / cover no-repeat;
 }
 
+.mini-img-nopeeking {
+  background: url("../media/project-previews/no_peeking_card.png") center / cover no-repeat;
+}
+
 .mini-title {
   position: absolute;
   inset: 0;
