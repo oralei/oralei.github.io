@@ -24,31 +24,48 @@
   </nav>
 
   <section class="hero">
-    <p class="hero-prompt"><span>// hi, my name is</span></p>
+    <p class="hero-prompt"><span>// nice to meet you, i'm</span></p>
     <h1 class="hero-name">Mark Justin Luansing<br></h1>
 
     <section class="about-strip" id="about">
+      <div class="model-viewer" id="model-viewer"></div>
       <div>
         <p class="strip-label">// about</p>
         <p class="strip-body">
-          A software developer based in <span class="blueblue">Saskatchewan</span> creating experiences that feel right, specializing in full-stack development.
+          I'm a software developer currently based in <span class="blueblue">Saskatchewan</span> creating full-stack web applications. Though outside of web development, I have a multitude of hobbies such as making music, drawing, 3d modelling, game dev, and weightlifting/calisthenics. You could say I'm a jack of all trades, master of... some.
+          <br><br>
+          Though if I had to pick one thing that's my favourite, it would be video games. Video games are an extremely important aspect of my life, and could not live without them. Right now I'm currently working on a rouge-lite, multiplayer, movement, hero FPS that I call "contractUnits" in Unity.
+          <br><br>
+          To see more of the things I'm working on or have completed, take a look at the projects page at the top!
         </p>
-      </div>
-      <div>
-        <p class="strip-label">// skills & technologies</p>
-        <div class="skills-list">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">JavaScript</span>
-          <span class="skill-chip">C#</span>
-          <span class="skill-chip">C/C++</span>
-          <span class="skill-chip">MySQL</span>
-          <span class="skill-chip">MongoDB</span>
-          <span class="skill-chip">Django</span>
-          <span class="skill-chip">Electron</span>
-          <span class="skill-chip">Unity</span>
-          <span class="skill-chip">Git</span>
-          <span class="skill-chip">Linux</span>
-          <span class="skill-chip">Blender</span>
+        <div class="strip-stacked">
+          <p class="strip-label">// skills & technologies</p>
+          <p class="skills-sublabel">languages</p>
+          <div class="skills-list">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">JavaScript</span>
+            <span class="skill-chip">TypeScript</span>
+            <span class="skill-chip">C#</span>
+            <span class="skill-chip">C/C++</span>
+          </div>
+          <p class="skills-sublabel">tools & architectures</p>
+          <div class="skills-list">
+            <span class="skill-chip">React</span>
+            <span class="skill-chip">Express.js</span>
+            <span class="skill-chip">Django</span>
+            <span class="skill-chip">Prisma</span>
+            <span class="skill-chip">Electron</span>
+            <span class="skill-chip">Unity</span>
+            <span class="skill-chip">Git</span>
+            <span class="skill-chip">Linux</span>
+            <span class="skill-chip">Blender</span>
+          </div>
+          <p class="skills-sublabel">databases</p>
+          <div class="skills-list">
+            <span class="skill-chip">MySQL</span>
+            <span class="skill-chip">PostgreSQL</span>
+            <span class="skill-chip">MongoDB</span>
+          </div>
         </div>
       </div>
     </section>
@@ -63,6 +80,16 @@
   </footer>
 
 </div>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+</script>
+<script type="module" src="statics/model.js"></script>
 
 </body>
 </html>
