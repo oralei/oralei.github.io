@@ -431,6 +431,66 @@ body::after {
   color: var(--text);
 }
 
+/* featured single project (above main projects) */
+.featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 80px;
+  opacity: 0;
+  animation: fadein 0.5s ease 0.4s forwards;
+}
+
+.featured-scene {
+  opacity: 1;
+  animation: none;
+}
+
+.card-preview-contract-units {
+  background: linear-gradient(135deg, #1568cc 0%, #0a3a80 100%);
+}
+
+.featured-title {
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.featured-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  margin-bottom: 22px;
+}
+
+.featured-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--blue);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--blue-dim);
+  padding: 9px 16px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.featured-btn:hover {
+  border-color: var(--blue);
+  background: var(--blue-glow);
+}
+
+.featured-btn:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* divider */
 .divider {
   display: flex;
@@ -604,6 +664,7 @@ body::after {
 
 @media (max-width: 640px) {
   .projects-grid { grid-template-columns: 1fr; gap: 40px; }
+  .featured { grid-template-columns: 1fr; gap: 28px; }
   .shell { padding: 0 20px; }
   .mini-card { flex-basis: calc((100% - var(--mini-gap)) / 2); }
   .page-header { padding: 48px 0 36px; }

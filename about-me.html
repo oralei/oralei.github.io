@@ -8,6 +8,19 @@
   <link rel="icon" href="media/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="statics/style2.css">
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .inline-link { color: var(--blue); text-decoration: underline; cursor: pointer; }
+    @keyframes nav-blink {
+      0%, 100% { color: var(--muted); }
+      50% { color: var(--blue); }
+    }
+    @keyframes nav-blink-line {
+      0%, 100% { width: 0; }
+      50% { width: 100%; }
+    }
+    .topbar-nav a.nav-flash { animation: nav-blink 0.5s ease-in-out 3; }
+    .topbar-nav a.nav-flash::after { transition: none; animation: nav-blink-line 0.5s ease-in-out 3; }
+  </style>
 </head>
 <body>
 
@@ -17,7 +30,7 @@
     <a class="topbar-logo" href="index.html">mjl<span style="color:var(--muted)">://</span></a>
     <ul class="topbar-nav">
       <li><a href="index.html">home</a></li>
-      <li><a href="projects2.html">projects</a></li>
+      <li><a href="projects2.html" id="nav-projects">projects</a></li>
       <li><a href="about-me.html" class="active">about</a></li>
       <li><a href="mailto:markjluansing@yahoo.com">contact</a></li>
     </ul>
@@ -36,7 +49,7 @@
           <br><br>
           Though if I had to pick one thing that's my favourite, it would be video games. Video games are an extremely important aspect of my life, and could not live without them. Right now I'm currently working on a rouge-lite, multiplayer, movement, hero FPS that I call "contractUnits" in Unity.
           <br><br>
-          To see more of the things I'm working on or have completed, take a look at the projects page at the top!
+          To see more of the things I'm working on or have completed, take a look at the <a href="projects2.html" id="projects-link" class="inline-link">projects</a> page at the top!
         </p>
         <div class="strip-stacked">
           <p class="strip-label">// skills & technologies</p>
@@ -80,6 +93,18 @@
   </footer>
 
 </div>
+
+<script>
+  document.getElementById('projects-link').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    var nav = document.getElementById('nav-projects');
+    nav.classList.remove('nav-flash');
+    void nav.offsetWidth;
+    nav.classList.add('nav-flash');
+    nav.addEventListener('animationend', function () { nav.classList.remove('nav-flash'); }, { once: true });
+  });
+</script>
 
 <script type="importmap">
   {
