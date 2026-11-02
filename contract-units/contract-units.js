@@ -165,3 +165,37 @@ const lenis = (() => {
   refresh();
   requestAnimationFrame(() => rail.classList.add('ready'));
 })();
+
+// Video carousel: shows one slide at a time, with prev/next arrows and a diamond dot per
+// slide. Switching pauses the video being left.
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const slides = [...carousel.querySelectorAll('.carousel-slide')];
+  const dotsWrap = carousel.querySelector('.carousel-dots');
+  let current = 0;
+
+  const dots = slides.map((slide, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot';
+    const title = slide.querySelector('figcaption');
+    dot.setAttribute('aria-label', title ? title.textContent : `Video ${i + 1}`);
+    dot.addEventListener('click', () => show(i));
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function show(i) {
+    const video = slides[current].querySelector('video');
+    if (video) video.pause();
+    current = (i + slides.length) % slides.length;
+    slides.forEach((s, j) => s.classList.toggle('active', j === current));
+    dots.forEach((d, j) => {
+      d.classList.toggle('active', j === current);
+      d.setAttribute('aria-current', j === current);
+    });
+  }
+
+  carousel.querySelector('.prev').addEventListener('click', () => show(current - 1));
+  carousel.querySelector('.next').addEventListener('click', () => show(current + 1));
+  show(0);
+});

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="smooth-scroll">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=block">
   <link rel="stylesheet" href="contract-units.css">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
   <script src="contract-units.js" defer></script>
 </head>
 <body>
@@ -36,23 +37,47 @@
 
     <h2 class="page-title section-title">What is Contract Units?</h2>
     <p class="page-intro left">
-      Contract Units is a solo project devoloped by oralei, currently a private/closed play-testing demo built in Unity.
-      Take place in an free for all arena up to 8 players, selecting a Unit and weapon loadout to eliminate your opponents.
+      Contract Units is a solo project devoloped by oralei, currently in a private/closed play-testing state.
+      Take part in an free for all arena up to 8 players, selecting a Unit and weapon loadout to eliminate your opponents.
 
       The game is heavily inspired by titles like Titanfall 2 and Call of Duty: Black Ops III applying many elements from both games into Contract Units.
       The core game is meant to bridge the gap between competitive shooters, and having casual fun with friends.
     </p>
 
-    <h2 class="page-title section-title">What is the game about?</h2>
+    <h2 class="page-title section-title">Progress</h2>
     <p class="page-intro left">
-      The Contract Units are a global private militia. If you have the funds, you can hire a "Unit" to get your dirty work done, whether that's
-      infiltrating a government property or guarding a political figure. They come from all over the world, each
-      specializing in a different area, but they all share one skill: eliminating their opponents, who are often
-      other Contract Units.
-      <br><br>
-      <a class="learn-more" href="cu-world.html">learn more</a>
+      This game begun development in May 2026, starting off initially as a BO3 movement recreation with multiplayer support. 
+      In June 2026, I initially wanted to fully nail down the movement mechanics and create racing gamemode.
+      Shortly after the initial steps in June as, I decided I wanted to go full throttle with the FPS genre, implementing the weapon and health system.
+      All the way from then and now, the core gameplay of Contract Units is a movement-based shooter. 
+      As months went on, more features were implemented and soon enough the project had progressed into a "playable" state.
     </p>
 
+    <section class="carousel" aria-label="Progress videos">
+      <div class="carousel-stage">
+        <button class="carousel-arrow prev" type="button" aria-label="Previous video">&#8249;</button>
+        <div class="carousel-slides">
+          <figure class="carousel-slide active">
+            <video src="media/progress/progress1.mp4" controls preload="metadata" playsinline></video>
+            <figcaption>May 2026</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <video src="media/progress/progress2.mp4" controls preload="metadata" playsinline></video>
+            <figcaption>June 2026</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <video src="media/progress/progress3.mp4" controls preload="metadata" playsinline></video>
+            <figcaption>October 2026</figcaption>
+          </figure>
+        </div>
+        <button class="carousel-arrow next" type="button" aria-label="Next video">&#8250;</button>
+      </div>
+      <div class="carousel-dots"></div>
+    </section>
+
+    <h2 class="page-title section-title">About the game</h2>
+
+    <h3 class="page-title section-title sub-title">Gameplay</h3>
     <section class="card-row">
       <a class="card" href="cu-gameplay.html">
         <h3>Exo Movement</h3>
@@ -67,6 +92,17 @@
         <p>Pick a Contract Unit, each with their own gadget, ultimate and playstyle.</p>
       </a>
     </section>
+
+    <h3 class="page-title section-title sub-title">Story</h3>
+    <p class="page-intro left">
+      The Contract Units are a global private militia. If you have the funds, you can hire a "Unit" to get your dirty work done, whether that's
+      infiltrating a government property or guarding a political figure. They come from all over the world, each
+      specializing in a different area, but they all share one skill: eliminating their opponents, who are often
+      other Contract Units.
+      <br><br>
+      <a class="learn-more" href="cu-world.html">learn more about the lore</a>
+    </p>
+
   </main>
 
 </body>

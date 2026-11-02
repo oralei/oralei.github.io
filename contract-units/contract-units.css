@@ -604,3 +604,91 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .rail-mark.active::after { animation: none; }
 }
+
+/* progress video carousel (see contract-units.js): one video at a time, arrows either
+   side and diamond dots underneath */
+.carousel { width: 100%; margin-bottom: 56px; }
+
+.carousel-stage {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.carousel-slides { position: relative; flex: 1; }
+
+.carousel-slide { display: none; }
+.carousel-slide.active { display: block; animation: rise-in 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+
+.carousel-slide video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+}
+
+.carousel-slide figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888;
+  text-align: center;
+}
+
+.carousel-arrow {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  padding-bottom: 4px;
+  background: none;
+  border: none;
+  color: #c4c4c4;
+  font-family: "Oxanium", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.carousel-arrow:hover { color: #3effef; }
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+/* same diamond look as the scroll rail markers */
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid #444;
+  background: #000;
+  transform: rotate(45deg);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.carousel-dot:hover { border-color: #888; }
+
+.carousel-dot.active {
+  border-color: #3effef;
+  background: #3effef;
+  box-shadow: 0 0 10px #3effef;
+}
+
+@media (max-width: 700px) {
+  .carousel-stage { gap: 8px; }
+  .carousel-arrow { width: 32px; height: 32px; font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide.active { animation: none; }
+}
