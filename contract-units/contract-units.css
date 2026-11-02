@@ -1,11 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   background: #000;
   color: #e8e8e8;
   min-height: 100vh;
+}
+
+/* page load / transition effects (see contract-units.js) */
+@keyframes page-in { from { opacity: 1; } }
+
+@keyframes load-bar {
+  0%   { transform: scaleX(0); opacity: 1; }
+  70%  { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+}
+
+/* Page fades use a black overlay instead of fading the body itself. Fading the whole body
+   forces the browser to re-composite everything (iframes included) every frame, which is
+   what made the fades choppy; an overlay only animates its own layer. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99;
+  will-change: opacity;
+  transition: opacity 0.25s ease;
+  animation: page-in 0.5s ease;
+}
+
+body.leaving::after { opacity: 1; }
+
+/* thin loading bar across the top of the page */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #3effef;
+  transform-origin: left;
+  pointer-events: none;
+  z-index: 100;
+  animation: load-bar 0.9s ease-out forwards;
+}
+
+/* The reveal is a keyframe animation rather than a transition, so it never overrides or
+   delays an element's own hover transitions (buttons, cards, links). */
+.reveal:not(.visible) { opacity: 0; }
+
+.reveal.visible {
+  animation: rise-in 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* the hero pieces rise in one after another on load */
+.hero > * { animation: rise-in 0.8s cubic-bezier(0.23, 1, 0.32, 1) backwards; }
+.hero > :nth-child(1) { animation-delay: 0.15s; }
+.hero > :nth-child(2) { animation-delay: 0.35s; }
+.hero > :nth-child(3) { animation-delay: 0.55s; }
+
+/* video placeholder: shimmer until the embed loads, then fade the video in */
+.video-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+/* the shimmer slides with transform (GPU) rather than animating a background */
+.video-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, #1c1c1c, transparent);
+  will-change: transform;
+  animation: shimmer 1.6s linear infinite;
+}
+
+.video-wrap iframe { position: relative; opacity: 0; transition: opacity 0.6s ease; }
+.video-wrap.loaded::before { display: none; }
+.video-wrap.loaded iframe { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, body::after, .hero > * { animation: none; }
+  body::before, body::after { display: none; }
+  .video-wrap::before { display: none; }
+  .video-wrap iframe { opacity: 1; }
 }
 
 .header {
@@ -23,7 +115,7 @@ body {
 
 .header-nav a {
   font-family: "Oxanium", sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   color: #c4c4c4;
   text-decoration: none;
   letter-spacing: 0.05em;
@@ -31,6 +123,320 @@ body {
 }
 
 .header-nav a:hover { color: #3effef; }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 56px 36px;
+  font-family: "Oxanium", sans-serif;
+}
+
+.page-title {
+  font-family: "Oxanium", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.page-intro {
+  max-width: 700px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #c4c4c4;
+  margin-bottom: 48px;
+}
+
+.section-title {
+  align-self: flex-start;
+  text-align: left;
+  font-size: 28px;
+}
+
+.media-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 36px;
+  width: 100%;
+}
+
+.media-text {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #c4c4c4;
+}
+
+.video-wrap {
+  flex: 2;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrap iframe { width: 100%; height: 100%; display: block; }
+
+@media (max-width: 700px) {
+  .media-row { flex-direction: column; }
+  .video-wrap { width: 100%; flex: none; }
+}
+
+.section-gap { margin-top: 80px; }
+
+.divider {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #1a1a1a;
+  margin: 72px 0 48px;
+}
+
+.sub-title {
+  font-size: 22px;
+  color: #c4c4c4;
+  margin-bottom: 16px;
+}
+
+.sub-title-mayhem {
+  font-size: 22px;
+  color: #3effef;
+  margin-bottom: 16px;
+}
+
+.augments-title {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+/* augments */
+.augments {
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  width: 100%;
+}
+
+.augment-list {
+  list-style: none;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.augment-item {
+  width: 100%;
+  padding: 12px 16px;
+  background: #0a0a0a;
+  border: 1px solid var(--tier);
+  border-left-width: 4px;
+  color: var(--tier);
+  font-family: "Oxanium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.augment-item:hover,
+.augment-item[aria-pressed="true"] { background: var(--tier); color: #000; }
+
+.silver { --tier: #a9adb3; }
+.gold { --tier: #ffc928; }
+
+.note-label { color: #ffc928; font-weight: 600; }
+
+.augment-detail {
+  flex: 2;
+  padding: 28px;
+  border: 1px solid var(--tier);
+  background: #0a0a0a;
+  transition: transform 0.08s linear;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.augment-tier {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tier);
+}
+
+.augment-detail h3 { font-size: 28px; margin: 8px 0 12px; color: var(--tier); }
+.augment-detail p { font-size: 16px; line-height: 1.6; color: #c4c4c4; }
+
+/* prismatic: shifting pink / blue / purple */
+.prismatic { --tier: #c77dff; }
+
+@keyframes prismatic-shift {
+  to { background-position: 200% 50%; }
+}
+
+/* The gradient text and the hover fill both run the same animation from page load, so
+   hovering only fades the fill in; nothing swaps or restarts, which avoids the jump. */
+.augment-item.prismatic {
+  position: relative;
+  isolation: isolate;
+  border-image: linear-gradient(90deg, #ff6ec7, #6ea8ff, #b06eff, #ff6ec7) 1;
+  background-color: #0a0a0a;
+  background-image: linear-gradient(90deg, #ff6ec7, #6ea8ff, #b06eff, #ff6ec7);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: prismatic-shift 4s linear infinite;
+  transition: -webkit-text-fill-color 0.2s;
+}
+
+.augment-item.prismatic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #ff6ec7, #6ea8ff, #b06eff, #ff6ec7);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+  animation: prismatic-shift 4s linear infinite;
+}
+
+.augment-item.prismatic:hover,
+.augment-item.prismatic[aria-pressed="true"] {
+  background-color: #0a0a0a;
+  -webkit-text-fill-color: #000;
+}
+
+.augment-item.prismatic:hover::before,
+.augment-item.prismatic[aria-pressed="true"]::before { opacity: 1; }
+
+/* The animated border is a pseudo-element behind a solid fill, rather than a two-layer
+   border-box background on the panel itself. Animating that background while the panel
+   is 3D-tilted caused flickering, so the tilted element stays static. */
+.augment-detail.prismatic {
+  position: relative;
+  isolation: isolate;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: 0 0 24px -8px #b06eff;
+}
+
+.augment-detail.prismatic::before,
+.augment-detail.prismatic::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+}
+
+.augment-detail.prismatic::before {
+  inset: -1px;
+  background: linear-gradient(90deg, #ff6ec7, #6ea8ff, #b06eff, #ff6ec7);
+  background-size: 200% 100%;
+  animation: prismatic-shift 4s linear infinite;
+}
+
+.augment-detail.prismatic::after {
+  inset: 0;
+  background: #0a0a0a;
+}
+
+.augment-detail.prismatic h3,
+.augment-detail.prismatic .augment-tier {
+  background: linear-gradient(90deg, #ff6ec7, #6ea8ff, #b06eff, #ff6ec7);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: prismatic-shift 4s linear infinite;
+}
+
+@media (max-width: 700px) {
+  .augments { flex-direction: column; }
+  .augment-list, .augment-detail { width: 100%; flex: none; }
+}
+
+.page-intro.left { text-align: left; max-width: none; margin-bottom: 40px; }
+.learn-more {
+  color: #3effef;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.learn-more:hover { border-bottom-color: #3effef; }
+
+.page-intro strong { color: #3effef; font-weight: 600; }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 0 72px;
+}
+
+.hero-title {
+  font-weight: 700;
+  font-size: 64px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-title { line-height: 0; }
+.hero-title img { height: 200px; width: auto; max-width: 100%; display: block; }
+
+.hero-tagline {
+  margin: 16px 0 32px;
+  font-size: 18px;
+  color: #c4c4c4;
+  letter-spacing: 0.05em;
+}
+
+.hero-cta {
+  padding: 12px 28px;
+  border: 1px solid #3effef;
+  color: #3effef;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.hero-cta:hover { background: #3effef; color: #000; }
+
+.card-row {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 56px;
+}
+
+.card {
+  flex: 1;
+  padding: 24px;
+  border: 1px solid #1a1a1a;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.card:hover { border-color: #3effef; }
+.card h3 { font-size: 20px; margin-bottom: 10px; letter-spacing: 0.05em; }
+.card p { font-size: 15px; line-height: 1.6; color: #c4c4c4; }
+
+@media (max-width: 700px) {
+  .hero-title img { height: 64px; }
+  .card-row { flex-direction: column; }
+}
 
 .coming-soon {
   display: flex;
@@ -43,4 +449,158 @@ body {
   color: #666;
   letter-spacing: 0.1em;
   user-select: none;
+}
+
+/* pages with <html class="hide-scrollbar"> still scroll, just without a visible bar */
+html.hide-scrollbar { scrollbar-width: none; }
+html.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* recommended Lenis rules (smooth wheel scrolling, see contract-units.js) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* scroll rail: fixed section tracker beside the scrollbar (built by contract-units.js
+   from any heading with a data-rail attribute) */
+.scroll-rail {
+  position: fixed;
+  /* starts below the 69px header, with breathing room above and below */
+  top: calc(69px + 32px);
+  bottom: 32px;
+  right: 22px;
+  width: 14px;
+  z-index: 50;
+  font-family: "Oxanium", sans-serif;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.4s;
+}
+
+.scroll-rail.ready { opacity: 1; }
+
+.rail-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: #1f1f1f;
+}
+
+/* small measurement ticks every 10% */
+.rail-track::before {
+  content: "";
+  position: absolute;
+  inset: 0 -3px;
+  background: repeating-linear-gradient(to bottom, #2a2a2a 0 1px, transparent 1px 10%);
+}
+
+.rail-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, #555);
+  transform-origin: top;
+  transform: scaleY(0);
+  will-change: transform;
+}
+
+/* scan head riding the end of the fill */
+.rail-head {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 11px;
+  height: 1px;
+  background: #aaa;
+  will-change: transform;
+}
+
+.rail-mark {
+  position: absolute;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+}
+
+.rail-dot {
+  width: 7px;
+  height: 7px;
+  border: 1px solid #444;
+  background: #000;
+  transform: rotate(45deg);
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.rail-mark.passed .rail-dot { border-color: #888; background: #222; }
+
+.rail-mark.active .rail-dot {
+  border-color: #3effef;
+  background: #3effef;
+  box-shadow: 0 0 10px #3effef;
+}
+
+/* pulse ring around the active marker */
+@keyframes rail-ping {
+  from { transform: rotate(45deg) scale(1); opacity: 0.8; }
+  to   { transform: rotate(45deg) scale(2.6); opacity: 0; }
+}
+
+.rail-mark.active::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #3effef;
+  animation: rail-ping 1.6s ease-out infinite;
+}
+
+.rail-label {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #777;
+  pointer-events: none;
+}
+
+/* the name wipes in from the right; hidden until active or hovered */
+.rail-label em {
+  font-style: normal;
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path 0.35s cubic-bezier(0.23, 1, 0.32, 1), color 0.3s;
+}
+
+/* connector line from the label to the marker */
+.rail-label::after {
+  content: "";
+  width: 0;
+  height: 1px;
+  background: #555;
+  transition: width 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.scroll-rail.awake .rail-mark.active .rail-label em,
+.scroll-rail:hover .rail-label em { clip-path: inset(0); }
+
+.scroll-rail.awake .rail-mark.active .rail-label em { color: #e8e8e8; }
+.scroll-rail.awake .rail-mark.active .rail-label::after { width: 14px; }
+
+.rail-mark:hover .rail-label em { color: #e8e8e8; }
+
+@media (max-width: 1000px) {
+  .scroll-rail { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail-mark.active::after { animation: none; }
 }

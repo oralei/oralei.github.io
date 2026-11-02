@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="hide-scrollbar smooth-scroll">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contract Units - Gameplay</title>
+  <link rel="icon" href="media/faviconTest.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=block">
+  <link rel="stylesheet" href="contract-units.css">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="contract-units.js" defer></script>
+</head>
+<body>
+
+  <header class="header">
+    <a class="header-logo" href="contract-units.html" aria-label="Contract Units home">
+      <img src="media/cuLogoBase.png" alt="Contract Units">
+    </a>
+    <nav class="header-nav">
+      <a href="contract-units.html">home</a>
+      <a href="cu-gameplay.html">gameplay</a>
+      <a href="cu-art.html">art</a>
+      <a href="cu-world.html">world</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Gameplay</h1>
+
+    <p class="page-intro">
+      Contract Units is a game like no other. It's fully dynamic, where you decide to pick gunfights that are slow and methodical or high energy and 
+      scrappy. The core gameplay of Contract Units focuses on snappy and satisfying gunplay, mixed with mechanical yet fluid movement that is
+      easy to learn, difficult to master.
+      <br><br>
+      <span class="note-label">Please note:</span> All gameplay shown below is subject to change. Artstyle, animations, sound effects, and visuals are all a work in progress and the game contains many placeholder assets.
+    </p>
+
+    <h2 class="page-title section-title" data-rail="Gunplay">Gunplay</h2>
+
+    <section class="media-row">
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/H-VgFOixWUw"
+          title="Contract Units gunplay video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="media-text">
+        <p>
+          Like any FPS, your aim is the most important asset in winning against your opponents. Contract Units is no different, placing gunplay first above
+          all else with satisfying and precise shooting mechanics. In Contract Units, there is no accuracy penalty for moving in air, allowing you to fight in the skies if you so wish.
+          The game also does not include "tagging" or "hit-slow", allowing you to traverse in and out of battle fluidly without stopping dead in your tracks just from a little bit of damage
+          <br><br>
+          The following video showcases the basic movement within live Contract Units gameplay. 
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <h2 class="page-title section-title" data-rail="Movement">Movement</h2>
+
+    <section class="media-row">
+      <div class="media-text">
+        <p>
+          Movement is an essential skill to learn, and mastering it will allow you to out maneuver your opponents in creative and unexpected ways.
+          The following video showcases the basic movement within live Contract Units gameplay. 
+        </p>
+      </div>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/H-VgFOixWUw"
+          title="Contract Units gameplay video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <h2 class="page-title section-title" data-rail="Units">Units</h2>
+
+    <section class="media-row">
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/H-VgFOixWUw"
+          title="Contract Units units video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="media-text">
+        <p>
+          In Contract Units, there will be a wide range of unique characters to choose from. Each Unit has a kit, equipped with a Gadget and Ultimate ability. 
+          Gadget's are renewable abilities that refresh based on a cooldown, while Ultimates are charged slowly overtime and mainly obtained through damaging enemy players.
+        </p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <h2 class="page-title">Future goals</h2>
+
+    <h3 class="page-title section-title sub-title">Core Gameplay Loop</h3>
+
+    <p class="page-intro left">
+      The main gamemode will be a round-based free for all up to 8 players where dying eliminates you for the remainder of the round. Eliminating enemy players
+      or being the last player remaining rewards you points towards a meter. At maximum points, you must win the round in order to win the match.
+      <br><br>
+      There will likley be other gamemodes, such as kill-point based rounds, where respawning is allowed, and the winner of the round is whomever hits the kill goal first.
+    </p>
+
+    <hr class="divider">
+
+    <h3 class="page-title section-title sub-title-mayhem" data-rail="Mayhem">Mayhem</h3>
+
+    <p class="page-intro left">
+      Mayhem is a rogue-lite layer that adds chaos and variety to every match. Each round you pick an augment,
+      and if you're losing, you're more likely to be offered better ones.
+
+      Here's a small taste of what's planned.
+    </p>
+
+    <h4 class="augments-title">Augment ideas</h4>
+
+    <section class="augments">
+      <ul class="augment-list" id="augment-list"></ul>
+      <div class="augment-detail" id="augment-detail" aria-live="polite">
+        <span class="augment-tier" id="augment-tier"></span>
+        <h3 id="augment-name"></h3>
+        <p id="augment-desc"></p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const augments = [
+      { tier: 'prismatic', name: 'Vampirism', desc: '50% of the damage you deal to health is healed back to you.' },
+      { tier: 'prismatic', name: 'Headhunter', desc: 'Bodyshots do 0 damage, but all headshots deal 150% extra damage.' },
+      { tier: 'prismatic', name: 'Airdash', desc: 'Gain a directional dash in the air. Costs the same fuel as a slide.' },
+      { tier: 'prismatic', name: 'Super Slam', desc: 'Crouch midair, consuming fuel, to drive downwards for immense collision damage and AOE.' },
+      { tier: 'gold', name: 'Hover Boots', desc: 'Hold jump after exhausting your exo fuel to fall extremely slowly. Fuel cannot regen while hovering.' },
+      { tier: 'gold', name: 'Tracker Rounds', desc: 'Gain a wallhack on your target for 0.5s after landing a bullet.' },
+      { tier: 'gold', name: 'One in the Chamber', desc: 'The last bullet of your magazine does 25% more damage.' },
+      { tier: 'gold', name: 'Spider', desc: 'Stay attached to the wall by pressing crouch while wall running.' },
+      { tier: 'silver', name: 'Sprinter', desc: '+15% sprint speed.' },
+      { tier: 'silver', name: 'Wallrunner', desc: 'Increases your base wall run speed to 10 m/s.' },
+      { tier: 'silver', name: 'Steady Hands', desc: 'Reduce recoil by 5%. Stackable.' },
+      { tier: 'silver', name: 'Extra Serving', desc: '+1 reserve plate. Stackable.' }
+    ];
+
+    const list = document.getElementById('augment-list');
+    const detail = document.getElementById('augment-detail');
+    const tierEl = document.getElementById('augment-tier');
+    const nameEl = document.getElementById('augment-name');
+    const descEl = document.getElementById('augment-desc');
+
+    function select(btn, aug) {
+      list.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === btn));
+      detail.className = 'augment-detail ' + aug.tier;
+      tierEl.textContent = aug.tier;
+      nameEl.textContent = aug.name;
+      descEl.textContent = aug.desc;
+    }
+
+    augments.forEach((aug, i) => {
+      const li = document.createElement('li');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'augment-item ' + aug.tier;
+      btn.textContent = aug.name;
+      btn.addEventListener('click', () => select(btn, aug));
+      li.appendChild(btn);
+      list.appendChild(li);
+      if (i === 0) select(btn, aug);
+    });
+
+    // 3D tilt on the augment display (same effect as the project cards)
+    (() => {
+      let raf;
+      const maxTilt = 12;
+
+      detail.addEventListener('mousemove', e => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          const rect = detail.getBoundingClientRect();
+          const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+          const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+          detail.style.transform =
+            `perspective(900px) rotateX(${-dy * maxTilt}deg) rotateY(${dx * maxTilt}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+      });
+
+      detail.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(raf);
+        detail.style.transition = 'transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)';
+        detail.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        setTimeout(() => { detail.style.transition = ''; }, 400);
+      });
+    })();
+  </script>
+
+</body>
+</html>
